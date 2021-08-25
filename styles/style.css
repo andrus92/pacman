@@ -1,0 +1,254 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: Arial;
+  color: #000;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s;
+  color: #000;
+}
+
+.wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+
+.top {
+  height: 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.pacman-item {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+}
+
+.pacman {
+  position: relative;
+  border-radius: 50%;
+  background: #F4B915;
+  width: 120px;
+  height: 120px;
+}
+
+/* white*/
+.pacman:before {
+  position: absolute;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  top: 18px;
+  right: 37px;
+}
+
+.pacman:after {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  top: 23px;
+  right: 37px;
+}
+
+.pacman-mouth {
+  background: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  animation-name: pacmanEating;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.victims-block {
+  position: absolute;
+  z-index: 2;
+  bottom: 50%;
+  right: 0;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  animation-name: victimsRun;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.victim {
+  width: 15px; 
+  height: 15px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.bottom {
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.witness { 
+  position: relative;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.witness--blue {
+  background: blue;
+}
+
+.witness--blue .witness-foot {
+  background: blue;
+}
+
+.witness--yellow {
+  background: yellow;
+}
+
+.witness--yellow .witness-foot {
+  background: yellow;
+}
+
+.witness--red {
+  background: red;
+}
+
+.witness--red .witness-foot {
+  background: red;
+}
+
+.witness--green {
+  background: green;
+} 
+
+.witness--green .witness-foot {
+  background: green;
+}
+
+.withess-eyes-block {
+  position: absolute;
+  top: 30px;
+}
+
+.witness-foots-block {
+  position: absolute;
+  display: flex;
+  bottom: -40px;
+}
+
+.witness-foot {
+  width: 40px;
+  height: 40px; 
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.withess-eyes-block {
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.witness-eye {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.witness-eye-ball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  z-index: 2;
+} 
+
+.witness-eye-apple {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  top: 5px;
+  right: 0px;
+  z-index: 3;
+
+  animation-name: eyesWatching;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes pacmanEating {
+  0% {
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  }
+  50% {
+    clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+  }
+  100% {
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  }
+}
+
+@keyframes victimsRun {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100px - 100vw));
+    /* transform: translateX(-100vw); */
+  }
+}
+
+@keyframes eyesWatching {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
